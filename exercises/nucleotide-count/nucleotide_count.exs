@@ -14,11 +14,9 @@ defmodule NucleotideCount do
   """
   @spec count([char], char) :: non_neg_integer
   def count(strand, nucleotide) do
-    Kernel.length(filter_strand_by_nucleotide(strand, nucleotide))
-  end
-
-  defp filter_strand_by_nucleotide(strand, nucleotide) do
-    Enum.filter(strand, fn(nucleotide_found) -> nucleotide_found == nucleotide end)
+    # Versione lunga
+    # Enum.count(strand, fn nucleotideFound -> nucleotideFound == nucleotide end )
+    Enum.count(strand, &(&1 == nucleotide))
   end
 
   @doc """
